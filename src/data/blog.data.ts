@@ -1,3 +1,5 @@
+import AppRelabLogo from "../assets/apprelab_logo.png"; // make sure path is correct
+
 export interface BlogSection {
   heading?: string;
   text?: string;
@@ -21,7 +23,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "At apprelab™, we bridge the gap between theory and real-world experience. Students don’t just learn—they apply their knowledge on paid, supervised projects.",
     category: "Education",
-    author: "Brendan Mebuge",
+    author: "Kamsiyochukwu Mebuge",
     date: "Dec 11, 2025",
     content: [
       {
@@ -31,8 +33,8 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Hands-On Projects",
         text: "- Learners work on real client projects.\n- Mentors provide step-by-step guidance.\n- Students build a verified portfolio as they learn.",
-        image: "https://images.unsplash.com/photo-1581093588401-99b03f79647d?auto=format&fit=crop&w=800&q=60"
-      },
+        image: AppRelabLogo 
+           },
       {
         heading: "Why It Matters",
         text: "In a fast-paced tech world, employers want people who can produce results immediately. Learning without doing isn’t enough."
@@ -43,7 +45,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         text: "“Learning is not enough; application is key.” – apprelab™",
-        image: "https://images.unsplash.com/photo-1601597115645-3a0d87e63c63?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
       },
     ],
   },
@@ -54,7 +56,7 @@ export const blogPosts: BlogPost[] = [
     excerpt:
       "WorkLab connects learners with real clients. Participants gain hands-on experience, mentorship, and verified portfolio pieces.",
     category: "Projects",
-    author: "Chisom U.",
+    author: "Chisom S.O",
     date: "Dec 10, 2025",
     content: [
       {
@@ -64,7 +66,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "How It Works",
         text: "1. Learners apply for projects.\n2. Mentors guide and review deliverables.\n3. Students complete projects and earn credentials.",
-        image: "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
       },
       {
         heading: "Benefits for Learners",
@@ -76,7 +78,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         text: "“Experience beats theory any day.” – apprelab™",
-        image: "https://images.unsplash.com/photo-1581091215365-06de57f446b0?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
       },
     ],
   },
@@ -97,7 +99,7 @@ export const blogPosts: BlogPost[] = [
       {
         heading: "Common Issues",
         text: "- No real client experience.\n- Lack of mentorship for real-world problems.\n- Portfolios often don’t reflect professional standards.",
-        image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
       },
       {
         heading: "How apprelab™ Fixes This",
@@ -109,7 +111,7 @@ export const blogPosts: BlogPost[] = [
       },
       {
         text: "“Bootcamps give knowledge, we give experience.” – apprelab™",
-        image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
       },
     ],
   },
@@ -129,7 +131,7 @@ export const blogPosts: BlogPost[] = [
     {
       heading: "Benefits for Learners",
       text: "- Personalized guidance based on skill level.\n- Avoid common mistakes.\n- Faster career progression.",
-      image: "https://images.unsplash.com/photo-1581091870629-2f05a1d9ecb3?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
     },
     {
       heading: "Mentorship at apprelab™",
@@ -137,7 +139,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       text: "“Mentorship turns potential into performance.” – apprelab™",
-      image: "https://images.unsplash.com/photo-1581093800964-8e7e4ec0c4c0?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
     },
   ],
 },
@@ -158,7 +160,7 @@ export const blogPosts: BlogPost[] = [
     {
       heading: "Why They Work",
       text: "- Reduce cognitive overload.\n- Focus on actionable skills.\n- Learners can apply knowledge immediately.",
-      image: "https://images.unsplash.com/photo-1573164574391-1c76e4f4b8f1?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
     },
     {
       heading: "Our Implementation",
@@ -166,7 +168,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       text: "“Learn fast, apply faster.” – apprelab™",
-      image: "https://images.unsplash.com/photo-1601758123927-1b03e6c64d6f?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
     },
   ],
 },
@@ -187,7 +189,7 @@ export const blogPosts: BlogPost[] = [
     {
       heading: "Our Solution",
       text: "- Real client projects.\n- Mentored delivery.\n- Portfolio-worthy outcomes.",
-      image: "https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
     },
     {
       heading: "Impact on Learners",
@@ -195,7 +197,7 @@ export const blogPosts: BlogPost[] = [
     },
     {
       text: "“Knowledge is power; applied knowledge is impact.” – apprelab™",
-      image: "https://images.unsplash.com/photo-1532619187608-37a0a6b07c8d?auto=format&fit=crop&w=800&q=60"
+        image: AppRelabLogo
     },
   ],
 },

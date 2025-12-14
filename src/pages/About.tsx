@@ -7,20 +7,19 @@ const DEFAULT_AVATAR = "https://via.placeholder.com/150";
 
 // TEAM DATA
 const TEAM_MEMBERS = [
-  { name: "Alice Johnson", role: "CEO", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Bob Smith", role: "Tech Lead", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Clara Lee", role: "Tech Lead", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Charlie Brown", role: "Frontend Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Daniel Kim", role: "Frontend Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Debbie Wilson", role: "Backend Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Harry Achugasim", role: "CEO", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Kamsiyochukwu B Mebuge", role: "Frontend Developer (Tech Lead)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Amaka Maduechesi", role: "Product Design Lead", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Prisca Ezeh", role: "Backend Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "David Isaac", role: "Frontend Developer (Intern)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Nwoye Fidelis Chidera", role: "Mobile Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Eve Thompson", role: "UI/UX Designer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Frank Liu", role: "UI/UX Designer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Grace Park", role: "QA Engineer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
 ];
 
 // FLEXBOX LAYOUT FUNCTION FOR TEAM SECTIONS
 const renderSection = (title: string, members: typeof TEAM_MEMBERS) => (
-  <Box sx={{ mb: 12 }}>
+  <Box sx={{ mb: 10 }}>
     <Typography
       variant="h4"
       sx={{ mb: 4, fontWeight: 600, color: "#1E293B", textAlign: "center" }}
@@ -45,7 +44,7 @@ const renderSection = (title: string, members: typeof TEAM_MEMBERS) => (
             textAlign: "center",
             borderRadius: 3,
             p: 3,
-            border: member.role === "CEO" ? "3px solid gold" : "1px solid #E2E8F0",
+            border: member.role === "CEO" ? "3px solid gold" : "1px solid #cccfd2ff",
             transition: "transform 0.3s",
             "&:hover": {
               transform: "translateY(-5px)",
@@ -105,20 +104,15 @@ const renderSection = (title: string, members: typeof TEAM_MEMBERS) => (
 );
 
 export default function About() {
+  // Categorize members
   const ceos = TEAM_MEMBERS.filter((m) => m.role === "CEO");
-  const techLeads = TEAM_MEMBERS.filter((m) => m.role.includes("Tech Lead"));
   const developers = TEAM_MEMBERS.filter((m) => m.role.includes("Developer"));
-  const designers = TEAM_MEMBERS.filter((m) => m.role.includes("Designer"));
   const others = TEAM_MEMBERS.filter(
-    (m) =>
-      !m.role.includes("CEO") &&
-      !m.role.includes("Tech Lead") &&
-      !m.role.includes("Developer") &&
-      !m.role.includes("Designer")
+    (m) => !m.role.includes("CEO") && !m.role.includes("Developer")
   );
 
   return (
-    <Box sx={{ pt: { xs: 6, md: 10 }, pb: { xs: 6, md: 12 }, background: "#F9FAFB" }}>
+    <Box sx={{ pt: { xs: 6, md: 10 }, pb: { xs: 6, md: 12 }, background: "#f9fafb51" }}>
       <Container maxWidth="lg">
         {/* INTRO SECTION */}
         <Box sx={{ textAlign: "center", mb: 12 }}>
@@ -137,11 +131,9 @@ export default function About() {
               lineHeight: 1.8,
             }}
           >
-            Apprelab™ is a unique platform that combines{" "}
-            <strong>learning, earning, and real-world experience</strong>.
+            Apprelab™ is a unique platform that combines <strong>learning, earning, and real-world experience</strong>.
             Our mission is to bridge the gap between education and professional opportunities.
-            We empower learners to gain practical skills through{" "}
-            <strong>micro-courses</strong>, while providing opportunities to apply those
+            We empower learners to gain practical skills through <strong>micro-courses</strong>, while providing opportunities to apply those
             skills on real paid projects with guidance from experienced mentors.
           </Typography>
 
@@ -189,9 +181,7 @@ export default function About() {
 
         {/* TEAM SECTIONS */}
         {renderSection("CEO", ceos)}
-        {renderSection("Tech Leads", techLeads)}
         {renderSection("Developers", developers)}
-        {renderSection("Designers", designers)}
         {others.length > 0 && renderSection("Other Team Members", others)}
       </Container>
     </Box>

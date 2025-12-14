@@ -4,7 +4,7 @@ import { blogPosts } from "../data/blog.data";
 
 export default function Blog() {
   return (
-    <Container sx={{ py: 10 }}>
+    <Container sx={{ py: 7 }}>
       <Typography variant="h3" sx={{ mb: 6, fontWeight: 700 }}>
         apprelab™ Blog
       </Typography>

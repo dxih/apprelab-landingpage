@@ -65,9 +65,8 @@ const Hero = () => {
                 fontSize: { xs: '0.95rem', md: '1.125rem' },
               }}
             >
-              apprelab™ combines the best of Udemy and Upwork - learn through micro-courses, 
-              then apply your skills on real paid projects with mentor guidance.
-            </Typography>
+            apprelab™ blends focused micro-learning with real-world projects, giving you hands-on experience and guided mentorship to build skills that truly matter.
+             </Typography>
 
             {/* FEATURES GRID */}
             <Box sx={{ 
