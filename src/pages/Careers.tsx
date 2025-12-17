@@ -5,7 +5,7 @@ import { jobs } from "../data/jobs.data";
 
 export default function Careers() {
   return (
-    <Container sx={{ py: 10 }}>
+    <Container sx={{ py: 7}}>
       <Typography variant="h3" sx={{ mb: 2, fontWeight: 700 }}>
         Careers at <span style={{ color: "#0057FF" }}>apprelab™</span>
       </Typography>

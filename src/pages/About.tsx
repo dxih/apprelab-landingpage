@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Avatar, Paper, IconButton } from "@mui/material";
+import { Box, Container, Typography, Avatar, Paper, IconButton, Chip, useMediaQuery } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -8,180 +8,259 @@ const DEFAULT_AVATAR = "https://via.placeholder.com/150";
 // TEAM DATA
 const TEAM_MEMBERS = [
   { name: "Harry Achugasim", role: "CEO", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Kamsiyochukwu B Mebuge", role: "Frontend Developer (Tech Lead)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Neto", role: "Co-Founder", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Kamsiyochukwu B Mebuge", role: "CTO & Frontend Developer (Tech Lead)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Amaka Maduechesi", role: "Product Design Lead", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Prisca Ezeh", role: "Backend Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "David Isaac", role: "Frontend Developer (Intern)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Nwoye Fidelis Chidera", role: "Mobile Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Eve Thompson", role: "UI/UX Designer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Frank Liu", role: "UI/UX Designer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Sarah James", role: "HR Manager", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Daniel Okorie", role: "Social Media Manager", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
 ];
 
-// FLEXBOX LAYOUT FUNCTION FOR TEAM SECTIONS
-const renderSection = (title: string, members: typeof TEAM_MEMBERS) => (
-  <Box sx={{ mb: 10 }}>
-    <Typography
-      variant="h4"
-      sx={{ mb: 4, fontWeight: 600, color: "#1E293B", textAlign: "center" }}
-    >
-      {title}
-    </Typography>
+// SORTING BY SENIORITY
+const sortBySeniority = (members: typeof TEAM_MEMBERS) => {
+  const priority = ["CEO", "Co-Founder", "Lead", "CTO", "Senior", "Developer", "Designer", "Intern"];
+  return [...members].sort((a, b) => {
+    const aIndex = priority.findIndex((p) => a.role.toLowerCase().includes(p.toLowerCase()));
+    const bIndex = priority.findIndex((p) => b.role.toLowerCase().includes(p.toLowerCase()));
+    return aIndex - bIndex;
+  });
+};
 
-    <Box
-      sx={{
-        display: "flex",
-        flexWrap: "wrap",
-        gap: 4,
-        justifyContent: "center",
-      }}
-    >
-      {members.map((member) => (
-        <Paper
-          key={member.name}
-          elevation={3}
-          sx={{
-            width: 220,
-            textAlign: "center",
-            borderRadius: 3,
-            p: 3,
-            border: member.role === "CEO" ? "3px solid gold" : "1px solid #cccfd2ff",
-            transition: "transform 0.3s",
-            "&:hover": {
-              transform: "translateY(-5px)",
-              boxShadow: "0 12px 32px rgba(0,87,255,0.15)",
-            },
-          }}
-        >
-          <Avatar
-            src={member.image}
-            alt={member.name}
-            sx={{ width: 100, height: 100, mx: "auto", mb: 2 }}
-          />
+// CARD SECTION RENDERER
+const renderSection = (title: string, members: typeof TEAM_MEMBERS) => {
+  const sortedMembers = sortBySeniority(members);
+  const isMobile = useMediaQuery("(max-width:600px)");
 
-          <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
-            {member.name}
-          </Typography>
+  return (
+    <Box sx={{ mb: 10 }}>
+      <Typography
+        variant="h4"
+        sx={{ mb: 4, fontWeight: 600, color: "#1E293B", textAlign: "center" }}
+      >
+        {title}
+      </Typography>
 
-          <Typography variant="body2" color="text.secondary" sx={{ mb: 1 }}>
-            {member.role}
-          </Typography>
+      <Box
+        sx={{
+          display: "grid",
+          gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(auto-fit, minmax(220px, 1fr))",
+          gap: 4,
+          justifyContent: "center",
+        }}
+      >
+        {sortedMembers.map((member) => (
+          <Paper
+            key={member.name}
+            elevation={3}
+            sx={{
+              textAlign: "center",
+              borderRadius: 3,
+              p: 3,
+              border: member.role.toLowerCase().includes("ceo") || member.role.toLowerCase().includes("co-founder")
+                ? "3px solid gold"
+                : "1px solid #cccfd2ff",
+              position: "relative",
+              transition: "transform 0.3s",
+              "&:hover": {
+                transform: "translateY(-5px)",
+                boxShadow: "0 12px 32px rgba(0,87,255,0.15)",
+              },
+            }}
+          >
+            {/* INTERN RIBBON */}
+            {member.role.toLowerCase().includes("intern") && (
+              <Box
+                sx={{
+                  position: "absolute",
+                  top: 10,
+                  right: -30,
+                  transform: "rotate(45deg)",
+                  background: "#FFB800",
+                  color: "#fff",
+                  px: 2,
+                  py: 0.5,
+                  fontWeight: 600,
+                  fontSize: "0.75rem",
+                }}
+              >
+                INTERN
+              </Box>
+            )}
 
-          <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
-            <IconButton
-              component="a"
-              href={member.linkedin}
-              target="_blank"
-              sx={{
-                color: "#0A66C2",
-                border: "1px solid #0A66C2",
-                borderRadius: "50%",
-                p: 0.5,
-                "&:hover": { backgroundColor: "rgba(10,102,194,0.1)" },
-              }}
-            >
-              <LinkedInIcon fontSize="small" />
-            </IconButton>
+            <Avatar
+              src={member.image}
+              alt={member.name}
+              sx={{ width: 100, height: 100, mx: "auto", mb: 1.5 }}
+            />
 
-            <IconButton
-              component="a"
-              href={member.github}
-              target="_blank"
-              sx={{
-                color: "#171515",
-                border: "1px solid #171515",
-                borderRadius: "50%",
-                p: 0.5,
-                "&:hover": { backgroundColor: "rgba(23,21,21,0.1)" },
-              }}
-            >
-              <GitHubIcon fontSize="small" />
-            </IconButton>
-          </Box>
-        </Paper>
-      ))}
+            <Typography variant="h6" sx={{ fontWeight: 600, mb: 0.5 }}>
+              {member.name}
+            </Typography>
+
+            {/* ROLE BADGE */}
+            <Chip
+              label={member.role}
+              size="small"
+              color={
+                member.role.toLowerCase().includes("developer")
+                  ? "primary"
+                  : member.role.toLowerCase().includes("designer")
+                  ? "secondary"
+                  : "default"
+              }
+              sx={{ mb: 1 }}
+            />
+
+            <Box sx={{ display: "flex", justifyContent: "center", gap: 1 }}>
+              <IconButton
+                component="a"
+                href={member.linkedin}
+                target="_blank"
+                sx={{
+                  color: "#0A66C2",
+                  border: "1px solid #0A66C2",
+                  borderRadius: "50%",
+                  p: 0.5,
+                  "&:hover": { backgroundColor: "rgba(10,102,194,0.1)" },
+                }}
+              >
+                <LinkedInIcon fontSize="small" />
+              </IconButton>
+
+              <IconButton
+                component="a"
+                href={member.github}
+                target="_blank"
+                sx={{
+                  color: "#171515",
+                  border: "1px solid #171515",
+                  borderRadius: "50%",
+                  p: 0.5,
+                  "&:hover": { backgroundColor: "rgba(23,21,21,0.1)" },
+                }}
+              >
+                <GitHubIcon fontSize="small" />
+              </IconButton>
+            </Box>
+          </Paper>
+        ))}
+      </Box>
     </Box>
-  </Box>
-);
+  );
+};
 
 export default function About() {
-  // Categorize members
-  const ceos = TEAM_MEMBERS.filter((m) => m.role === "CEO");
-  const developers = TEAM_MEMBERS.filter((m) => m.role.includes("Developer"));
+  const founders = TEAM_MEMBERS.filter((m) => m.role.toLowerCase().includes("co-founder"));
+  const ceos = TEAM_MEMBERS.filter((m) => m.role.toLowerCase().includes("ceo"));
+  const leads = TEAM_MEMBERS.filter((m) =>
+    m.role.toLowerCase().includes("lead") || m.role.toLowerCase().includes("cto")
+  );
+  const developers = TEAM_MEMBERS.filter((m) =>
+    m.role.toLowerCase().includes("developer") && !m.role.toLowerCase().includes("cto")
+  );
+  const designers = TEAM_MEMBERS.filter((m) =>
+    m.role.toLowerCase().includes("designer")
+  );
   const others = TEAM_MEMBERS.filter(
-    (m) => !m.role.includes("CEO") && !m.role.includes("Developer")
+    (m) =>
+      !founders.includes(m) &&
+      !ceos.includes(m) &&
+      !leads.includes(m) &&
+      !developers.includes(m) &&
+      !designers.includes(m)
   );
 
   return (
     <Box sx={{ pt: { xs: 6, md: 10 }, pb: { xs: 6, md: 12 }, background: "#f9fafb51" }}>
       <Container maxWidth="lg">
-        {/* INTRO SECTION */}
+        {/* INTRO */}
         <Box sx={{ textAlign: "center", mb: 12 }}>
           <Typography variant="h2" sx={{ fontWeight: 700, mb: 3, color: "#0057FF" }}>
             About Apprelab™
           </Typography>
-
           <Typography
             variant="body1"
             sx={{
-              maxWidth: 800,
+              maxWidth: 850,
               mx: "auto",
               mb: 4,
               color: "#475569",
               fontSize: { xs: "1rem", md: "1.125rem" },
-              lineHeight: 1.8,
+              lineHeight: 1.9,
             }}
           >
-            Apprelab™ is a unique platform that combines <strong>learning, earning, and real-world experience</strong>.
-            Our mission is to bridge the gap between education and professional opportunities.
-            We empower learners to gain practical skills through <strong>micro-courses</strong>, while providing opportunities to apply those
-            skills on real paid projects with guidance from experienced mentors.
+            Apprelab™ is a modern learning and work platform built to help people
+            <strong> gain real skills, real experience, and real income</strong>.
+            We go beyond theory by creating a space where learning meets practical execution.
           </Typography>
-
           <Typography
             variant="body1"
             sx={{
-              maxWidth: 800,
+              maxWidth: 850,
               mx: "auto",
               mb: 4,
               color: "#475569",
               fontSize: { xs: "1rem", md: "1.125rem" },
-              lineHeight: 1.8,
+              lineHeight: 1.9,
             }}
           >
-            Our platform structure is built around <strong>three pillars</strong>:
+            Instead of stopping at courses, Apprelab™ allows learners to immediately
+            apply what they’ve learned on <strong>real-world projects</strong> —
+            guided by mentors and built for professional growth.
+          </Typography>
+          <Typography
+            variant="body1"
+            sx={{
+              maxWidth: 850,
+              mx: "auto",
+              mb: 4,
+              color: "#475569",
+              fontSize: { xs: "1rem", md: "1.125rem" },
+              lineHeight: 1.9,
+            }}
+          >
+            Our ecosystem is designed around three core pillars:
           </Typography>
 
-          <Box sx={{ textAlign: "left", maxWidth: 600, mx: "auto", mb: 8 }}>
+          <Box sx={{ textAlign: "left", maxWidth: 650, mx: "auto", mb: 8 }}>
             <Typography variant="body1" sx={{ mb: 1 }}>
-              • <strong>Learn:</strong> Access affordable micro-courses designed to teach practical skills.
+              • <strong>Learn:</strong> Practical micro-courses focused on in-demand skills.
             </Typography>
             <Typography variant="body1" sx={{ mb: 1 }}>
-              • <strong>Earn:</strong> Work on real paid projects to gain hands-on experience.
+              • <strong>Work:</strong> Hands-on paid projects that build confidence and experience.
             </Typography>
             <Typography variant="body1" sx={{ mb: 1 }}>
-              • <strong>Build Experience:</strong> Receive mentor guidance and earn verified certifications.
+              • <strong>Grow:</strong> Mentor guidance, certifications, and a portfolio that speaks for you.
             </Typography>
           </Box>
 
           <Typography
             variant="body1"
             sx={{
-              maxWidth: 800,
+              maxWidth: 850,
               mx: "auto",
               color: "#475569",
               fontSize: { xs: "1rem", md: "1.125rem" },
-              lineHeight: 1.8,
+              lineHeight: 1.9,
             }}
           >
-            Our goal is to create a <strong>community of skilled professionals</strong> ready
-            to excel in the real world. We aim to empower learners, connect them with mentors
-            and SMEs, and help them build a professional portfolio that truly stands out.
+            At Apprelab™, our goal is simple — to help individuals transition from
+            learning to earning with confidence, clarity, and real proof of skill.
+            We’re building a community where talent is nurtured, experience is earned,
+            and opportunities are created.
           </Typography>
         </Box>
 
-        {/* TEAM SECTIONS */}
+        {/* TEAM */}
         {renderSection("CEO", ceos)}
+        {renderSection("Co-Founder", founders)}
+        {renderSection("Leads", leads)}
         {renderSection("Developers", developers)}
+        {renderSection("Designers", designers)}
         {others.length > 0 && renderSection("Other Team Members", others)}
       </Container>
     </Box>

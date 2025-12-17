@@ -78,15 +78,17 @@ export default function CareerJobDetail() {
         </Box>
       )}
 
-      <Button
-        variant="contained"
-        sx={{ background: "#0057FF" }}
-        onClick={() =>
-          (window.location.href = `mailto:${job.applicationEmail}?subject=${encodeURIComponent(job.title)}`)
-        }
-      >
-        Apply via Email
-      </Button>
+<Button
+  variant="contained"
+  sx={{ background: "#0057FF" }}
+  component="a"
+  href={job.applicationLink}
+  target="_blank"
+  rel="noopener noreferrer"
+>
+  Apply Here
+</Button>
+
 
       <Button variant="text" sx={{ ml: 2 }} onClick={() => navigate("/careers")}>
         Back

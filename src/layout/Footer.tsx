@@ -1,8 +1,16 @@
-import { Box, Container, Typography, IconButton, Link } from '@mui/material';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import AppRelabLogo from '../assets/apprelab_logo.png';
+import {
+  Box,
+  Container,
+  Typography,
+  IconButton,
+  Link,
+  TextField,
+  Button,
+} from "@mui/material";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import FacebookIcon from "@mui/icons-material/Facebook";
+import InstagramIcon from "@mui/icons-material/Instagram";
+import AppRelabLogo from "../assets/apprelab_logo.png";
 import { Link as RouterLink } from "react-router-dom";
 
 const Footer = () => {
@@ -11,24 +19,24 @@ const Footer = () => {
       component="footer"
       sx={{
         py: 6,
-        background: 'rgba(255, 255, 255, 0.91)',
-        backdropFilter: 'blur(10px)',
-        borderTop: '1px solid rgba(0, 87, 255, 0.1)',
+        background: "rgba(255, 255, 255, 0.91)",
+        backdropFilter: "blur(10px)",
+        borderTop: "1px solid rgba(0, 87, 255, 0.1)",
         mt: 10,
       }}
     >
       <Container maxWidth="lg">
         <Box
           sx={{
-            display: 'flex',
-            flexDirection: { xs: 'column', md: 'row' },
-            justifyContent: 'space-between',
-            alignItems: 'flex-start',
-            gap: 4,
+            display: "flex",
+            flexDirection: { xs: "column", md: "row" },
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: 6,
           }}
         >
-          {/* BRAND */}
-          <Box sx={{ textAlign: { xs: 'center', md: 'left' } }}>
+          {/* BRAND + SOCIALS */}
+          <Box sx={{ textAlign: { xs: "center", md: "left" } }}>
             <Box
               component="img"
               src={AppRelabLogo}
@@ -38,102 +46,148 @@ const Footer = () => {
 
             <Typography
               variant="body2"
-              sx={{ color: '#64748B', fontWeight: 500 }}
+              sx={{ color: "#64748B", fontWeight: 500, mb: 2 }}
             >
               Bridging the gap between learning and real-world experience.
             </Typography>
+
+            {/* SOCIAL ICONS */}
+            <Box
+              sx={{
+                display: "flex",
+                gap: 1,
+                justifyContent: { xs: "center", md: "flex-start" },
+              }}
+            >
+              {[
+                {
+                  icon: LinkedInIcon,
+                  url: "https://www.linkedin.com/company/apprelabapp/",
+                },
+                {
+                  icon: FacebookIcon,
+                  url: "https://www.facebook.com/share/16ZSJVe8eu/",
+                },
+                {
+                  icon: InstagramIcon,
+                  url: "https://www.instagram.com/apprelab",
+                },
+              ].map(({ icon: Icon, url }, i) => (
+                <IconButton
+                  key={i}
+                  component="a"
+                  href={url}
+                  target="_blank"
+                  sx={{
+                    color: "#64748B",
+                    transition: "0.3s",
+                    "&:hover": {
+                      color: "#0057FF",
+                      transform: "translateY(-3px)",
+                      backgroundColor: "rgba(0, 87, 255, 0.08)",
+                    },
+                  }}
+                >
+                  <Icon />
+                </IconButton>
+              ))}
+            </Box>
           </Box>
 
-          {/* 2 COLUMN LINKS */}
-        <Box
-          sx={{
-            display: "flex",
-            gap: 6,
-            textAlign: { xs: "center", md: "left" },
-
-            // 🔥 Center it on mobile with margin left/right 50px
-            ml: { xs: "50px", md: 0 },
-            mr: { xs: "50px", md: 0 },
-
-            justifyContent: { xs: "center", md: "flex-start" },
-            alignItems: { xs: "center", md: "flex-start" },
-          }}
-        >
-
-            {/* COLUMN 1 */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
+          {/* LINKS */}
+          <Box
+            sx={{
+              display: "flex",
+              gap: 6,
+              textAlign: { xs: "center", md: "left" },
+              justifyContent: { xs: "center", md: "flex-start" },
+            }}
+          >
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
               <FooterLink text="Home" to="/" />
               <FooterLink text="Careers" to="/careers" />
               <FooterLink text="Blog" to="/blog" />
             </Box>
 
-            {/* COLUMN 2 */}
-            <Box sx={{ display: 'flex', flexDirection: 'column', gap: 1.2 }}>
+            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
               <FooterLink text="Contact" to="/contact" />
               <FooterLink text="Privacy Policy" to="/privacy-policy" />
               <FooterLink text="Terms of Service" to="/terms" />
             </Box>
           </Box>
 
-      {/* SOCIALS */}
-      <Box sx={{ display: 'flex', gap: 1 , paddingLeft: { xs: 17, md: 0 },}}>
-        {[
-          { icon: LinkedInIcon, url: "https://www.linkedin.com/company/apprelabapp/" },
-          { icon: FacebookIcon, url: "https://www.facebook.com/share/16ZSJVe8eu/" },
-          { icon: InstagramIcon, url: "https://www.instagram.com/apprelab?utm_source=qr&igsh=Z2x5aDRreDZ2NHpw" },
-        ].map(({ icon: Icon, url }, i) => (
-          <IconButton
-            key={i}
-            component="a"
-            href={url}
-            target="_blank"
+          {/* NEWSLETTER */}
+          <Box
             sx={{
-              color: '#64748B',
-              transition: '0.3s',
-              '&:hover': {
-                color: '#0057FF',
-                transform: 'translateY(-3px)',
-                backgroundColor: 'rgba(0, 87, 255, 0.08)',
-              },
+              maxWidth: 280,
+              width: "100%",
+              textAlign: { xs: "center", md: "left" },
             }}
           >
-            <Icon />
-          </IconButton>
-        ))}
-      </Box>
+            <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
+              Join our newsletter
+            </Typography>
+
+            <Typography
+              variant="body2"
+              sx={{ color: "#64748B", mb: 2 }}
+            >
+              Get updates on new courses, WorkLab projects, and opportunities.
+            </Typography>
+
+            <TextField
+              fullWidth
+              size="small"
+              placeholder="Enter your email"
+              type="email"
+              sx={{ mb: 1.5 }}
+            />
+
+            <Button
+              fullWidth
+              variant="contained"
+              sx={{
+                textTransform: "none",
+                fontWeight: 600,
+                background: "#0057FF",
+                "&:hover": { background: "#0047d4" },
+              }}
+            >
+              Join Newsletter
+            </Button>
+          </Box>
         </Box>
 
         {/* COPYRIGHT */}
         <Typography
           variant="body2"
           sx={{
-            textAlign: 'center',
+            textAlign: "center",
             mt: 4,
             pt: 3,
-            borderTop: '1px solid rgba(0, 87, 255, 0.1)',
-            color: '#94A3B8',
+            borderTop: "1px solid rgba(0, 87, 255, 0.1)",
+            color: "#94A3B8",
             fontWeight: 500,
           }}
         >
-          © 2025 AppRelab. All rights reserved.
+          © 2025 Apprelab. All rights reserved.
         </Typography>
       </Container>
     </Box>
   );
 };
 
-/* SMALL REUSABLE LINK COMPONENT */
+/* REUSABLE LINK */
 const FooterLink = ({ text, to }: { text: string; to: string }) => (
   <Link
     component={RouterLink}
     to={to}
     underline="none"
-    variant='h6'
+    variant="h6"
     sx={{
-      color: '#475569',
+      color: "#475569",
       fontWeight: 600,
-      display: 'block',
-      "&:hover": { color: "#0057FF", textDecoration: "none" },
+      "&:hover": { color: "#0057FF" },
     }}
   >
     {text}

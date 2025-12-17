@@ -10,7 +10,7 @@ export interface Job {
   requirements: string[];
   niceToHave?: string[];
   offer?: string[];
-  applicationEmail: string;
+  applicationLink: string;
 }
 
 export const jobs: Job[] = [
@@ -49,7 +49,7 @@ Your work will build brand awareness, attract new users, and engage the communit
       "Competitive compensation + growth opportunities.",
       "Work in a collaborative, young, and mission-driven environment.",
     ],
-    applicationEmail: "Chibuezejoshua24@gmail.com",
+    applicationLink: "https://docs.google.com/document/d/1v2Zx7pepjtNzC3skX3xbTyRdqqiFBV7O5UBZpls04F4/edit?usp=drivesdk",
   },
   {
   id: 2,
@@ -85,7 +85,7 @@ You will own the design experience for Apprelab’s platform. From wireframes to
     "Flexible working environment.",
     "Collaborate with a young, dynamic, and mission-driven team.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/1yLc4a_MMq337lZM2I7dkWF-GgvcjnPa6yeRmWapd4hY/edit?usp=drivesdk",
 },
 {
   id: 3,
@@ -134,7 +134,7 @@ You will collaborate closely with product, design, and growth teams to ship feat
     "Competitive salary + performance and equity options.",
     "Clear growth path into senior engineering and leadership roles.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/1CMo87ljBhARK_Dcq7Z1VDo2P9feSuOyh4SaGbSptdPM/edit?usp=drivesdk",
 },
 {
   id: 4,
@@ -179,7 +179,7 @@ The Graphics Designer will create high-quality visual assets for product, market
     "Competitive salary + performance benefits.",
     "Work on meaningful learning-focused design projects.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/12G_nI-Tf-c2fc1QpIdN9dwkyhgp8gv2AgVRTQnbCMJ0/edit?usp=drivesdk",
 },
 
 {
@@ -229,7 +229,7 @@ The HR & Operations Manager will oversee all core people functions, recruitment,
     "Growth opportunities as the company expands.",
     "Work with a young, dynamic, mission-driven team.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/1gTulQZPxtX3n3Ew5L7v6T39arD2KrAeR3PPP4gIeRkk/edit?usp=drivesdk",
 },
 
 {
@@ -281,7 +281,7 @@ The Marketing Lead will be responsible for driving Apprelab’s marketing strate
     "Work with a driven, young, and innovative team building the future of education.",
     "Opportunity to create a portfolio of large-scale, meaningful work.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/1CnNhF_h8QG9DeQqGud5eGCnGMU0y7SID5-in1sAGpkg/edit?usp=drivesdk",
 },
 
 {
@@ -325,7 +325,7 @@ You will build relationships with schools, EdTech stakeholders, agencies, commun
     "Competitive salary + performance or commission bonuses.",
     "Opportunity to build and lead the partnerships arm of the company.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/1Hy1ymMBvyqILjkDDEd4ZIfwGTmIUhDRXblPRYvHtUYc/edit?usp=drivesdk",
 },
 
 {
@@ -361,7 +361,7 @@ You will build relationships with schools, EdTech stakeholders, agencies, commun
     "Creative freedom + a collaborative team.",
     "Competitive salary and growth opportunities.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/1yJE_Yy-KzWuFR8Mr5ilv5zbjX_oxj6TeLN9NEACAU38/edit?usp=drivesdk",
 },
 
 
@@ -412,7 +412,7 @@ We’re expanding our team and looking for a creative, data-driven Social Media 
     "Competitive salary + performance incentives.",
     "Work with a young, innovative, mission-driven team.",
   ],
-  applicationEmail: "Chibuezejoshua24@gmail.com",
+  applicationLink: "https://docs.google.com/document/d/1JeJYmJdf2fs1dSZJUHiiri_szb6qEXKsdNuFy3LQHB4/edit?usp=drivesdk",
 }
 
 

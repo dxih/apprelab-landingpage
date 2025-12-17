@@ -9,7 +9,7 @@ export default function Contact() {
   };
 
   return (
-    <Container sx={{ py: 10 }}>
+    <Container sx={{ py: 7 }}>
       <Typography variant="h3" sx={{ fontWeight: 700, mb: 3 }}>
         Contact Us
       </Typography>
