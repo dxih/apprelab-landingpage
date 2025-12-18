@@ -15,9 +15,9 @@ import marketingImg from "../assets/members/Marketing.jpg";
 const TEAM_MEMBERS = [
   { name: "Harry Achugasim", role: "CEO", image: ceoImg, linkedin: "https://www.linkedin.com/in/harry-achugasim-959404225", x: "https://x.com/HAchugasim" },
   { name: "Chibueze Joshua", role: "Co-founder / COO", image: cooImg, linkedin: "https://www.linkedin.com/in/chibueze-joshua?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app", x: "https://x.com/ChibuezejoshuaO?t=kNa8B-1KJ7Ha8sFv06BZjw&s=09" },
-  { name: "Kamsiyochukwu B Mebuge", role: "CTO / Tech Lead", image: ctoImg, linkedin: "Https://www.linkedin.com/in/kamsiyochukwu-mebuge ", x: "https://x.com/Brendanmebson", github: "Https://www.github.com/brendanmebson" },
+  { name: "Kamsiyochukwu B Mebuge", role: "Tech Lead", image: ctoImg, linkedin: "Https://www.linkedin.com/in/kamsiyochukwu-mebuge ", x: "https://x.com/Brendanmebson", github: "Https://www.github.com/brendanmebson" },
   { name: "Amaka Maduechesi", role: "Product Design Lead", image: amakaImg, linkedin: "https://www.linkedin.com/in/chioma-maduechesi-ab7920243?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" },
-  { name: "Stanley Williams", role: "Marketing / Brand Designer", image: marketingImg, linkedin: "https://www.linkedin.com/in/enibodesign", x: "https://x.com/enibodesign" },
+  { name: "Stanley Williams", role: "Marketing / Brand Designer Lead", image: marketingImg, linkedin: "https://www.linkedin.com/in/enibodesign", x: "https://x.com/enibodesign" },
 ];
 
 // SORTING BY ROLE
