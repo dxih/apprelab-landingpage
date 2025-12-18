@@ -13,6 +13,7 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import ChatBubbleOutlineIcon from "@mui/icons-material/ChatBubbleOutline";
+import ReactMarkdown from "react-markdown";
 import { blogPosts, BlogSection } from "../data/blog.data";
 
 interface Comment {
@@ -80,16 +81,18 @@ export default function BlogPost() {
       )}
 
       {section.text && (
-        <Typography sx={{ color: "#475569", lineHeight: 1.9, mb: 2 }}>
-          {section.text.split("\n").map((line, idx) => (
-            <span key={idx}>
-              {line.startsWith("- ")
-                ? `• ${line.replace("- ", "")}`
-                : line}
-              <br />
-            </span>
-          ))}
-        </Typography>
+        <Box sx={{ color: "#475569", lineHeight: 1.9, mb: 2 }}>
+          <ReactMarkdown
+            components={{
+              ul: ({ children }) => <Box component="ul" sx={{ pl: 3, mb: 1 }}>{children}</Box>,
+              li: ({ children }) => <Box component="li" sx={{ mb: 1 }}>{children}</Box>,
+              strong: ({ children }) => <Box component="strong" sx={{ fontWeight: 700 }}>{children}</Box>,
+              p: ({ children }) => <Typography component="p" sx={{ mb: 1 }}>{children}</Typography>,
+            }}
+          >
+            {section.text}
+          </ReactMarkdown>
+        </Box>
       )}
 
       {/* 🔥 IMAGE (DESKTOP-SAFE SIZE) */}
@@ -107,8 +110,8 @@ export default function BlogPost() {
             alt={section.heading || "Blog Image"}
             sx={{
               width: "100%",
-              maxWidth: "720px",   // 👈 desktop cap
-              maxHeight: "420px",  // 👈 no giant images
+              maxWidth: "720px",
+              maxHeight: "420px",
               objectFit: "cover",
               borderRadius: 3,
               boxShadow: "0 10px 30px rgba(0,0,0,0.08)",
@@ -120,9 +123,9 @@ export default function BlogPost() {
   ));
 
   return (
-    <Container sx={{ py: 10, maxWidth: "md" }}>
+    <Container sx={{ py: 6, maxWidth: "md" }}>
       {/* TITLE */}
-      <Typography variant="h3" sx={{ fontWeight: 700, mb: 3 }}>
+      <Typography variant="h2" sx={{ fontWeight: 700, mb: 3 }}>
         {post.title}
       </Typography>
 
