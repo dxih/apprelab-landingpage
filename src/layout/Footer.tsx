@@ -26,12 +26,13 @@ const Footer = () => {
       }}
     >
       <Container maxWidth="lg">
+        {/* MAIN WRAPPER */}
         <Box
           sx={{
             display: "flex",
             flexDirection: { xs: "column", md: "row" },
             justifyContent: "space-between",
-            alignItems: "flex-start",
+            alignItems: { xs: "center", md: "flex-start" },
             gap: 6,
           }}
         >
@@ -99,17 +100,34 @@ const Footer = () => {
             sx={{
               display: "flex",
               gap: 6,
+              marginTop: { xs: 0, md: 5 },
               textAlign: { xs: "center", md: "left" },
-              justifyContent: { xs: "center", md: "flex-start" },
+              justifyContent: "center",
+              alignItems: { xs: "center", md: "flex-start" },
             }}
           >
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 1.2,
+                alignItems: { xs: "center", md: "flex-start" },
+              }}
+            >
               <FooterLink text="Home" to="/" />
               <FooterLink text="Careers" to="/careers" />
               <FooterLink text="Blog" to="/blog" />
+              <FooterLink text="Cookies" to="/cookie-policy" />
             </Box>
 
-            <Box sx={{ display: "flex", flexDirection: "column", gap: 1.2 }}>
+            <Box
+              sx={{
+                display: "flex",
+                flexDirection: "column",
+                gap: 1.2,
+                alignItems: { xs: "center", md: "flex-start" },
+              }}
+            >
               <FooterLink text="Contact" to="/contact" />
               <FooterLink text="Privacy Policy" to="/privacy-policy" />
               <FooterLink text="Terms of Service" to="/terms" />
@@ -122,16 +140,15 @@ const Footer = () => {
               maxWidth: 280,
               width: "100%",
               textAlign: { xs: "center", md: "left" },
+              alignItems: { xs: "center", md: "flex-start" },
+              mx: { xs: "auto", md: 0 },
             }}
           >
             <Typography variant="h6" sx={{ fontWeight: 700, mb: 1 }}>
               Join our newsletter
             </Typography>
 
-            <Typography
-              variant="body2"
-              sx={{ color: "#64748B", mb: 2 }}
-            >
+            <Typography variant="body2" sx={{ color: "#64748B", mb: 2 }}>
               Get updates on new courses, WorkLab projects, and opportunities.
             </Typography>
 
@@ -177,7 +194,7 @@ const Footer = () => {
   );
 };
 
-/* REUSABLE LINK */
+/* REUSABLE LINK – NO UNDERLINE, NO FOCUS LINE */
 const FooterLink = ({ text, to }: { text: string; to: string }) => (
   <Link
     component={RouterLink}
@@ -187,7 +204,18 @@ const FooterLink = ({ text, to }: { text: string; to: string }) => (
     sx={{
       color: "#475569",
       fontWeight: 600,
-      "&:hover": { color: "#0057FF" },
+      textDecoration: "none",
+      transition: "color 0.25s ease",
+      "&:hover": {
+        color: "#0057FF",
+        textDecoration: "none",
+      },
+      "&:focus": {
+        outline: "none",
+      },
+      "&:focus-visible": {
+        outline: "none",
+      },
     }}
   >
     {text}

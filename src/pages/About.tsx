@@ -1,4 +1,4 @@
-import { Box, Container, Typography, Avatar, Paper, IconButton, Chip, useMediaQuery } from "@mui/material";
+import { Box, Container, Typography, Avatar, Paper, IconButton, Chip } from "@mui/material";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import GitHubIcon from "@mui/icons-material/GitHub";
 
@@ -8,8 +8,7 @@ const DEFAULT_AVATAR = "https://via.placeholder.com/150";
 // TEAM DATA
 const TEAM_MEMBERS = [
   { name: "Harry Achugasim", role: "CEO", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Neto", role: "Co-Founder", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
-  { name: "Kamsiyochukwu B Mebuge", role: "CTO & Frontend Developer (Tech Lead)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
+  { name: "Kamsiyochukwu B Mebuge", role: "Frontend Developer (Tech Lead)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Amaka Maduechesi", role: "Product Design Lead", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "Prisca Ezeh", role: "Backend Developer", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
   { name: "David Isaac", role: "Frontend Developer (Intern)", image: DEFAULT_AVATAR, linkedin: "#", github: "#" },
@@ -22,7 +21,7 @@ const TEAM_MEMBERS = [
 
 // SORTING BY SENIORITY
 const sortBySeniority = (members: typeof TEAM_MEMBERS) => {
-  const priority = ["CEO", "Co-Founder", "Lead", "CTO", "Senior", "Developer", "Designer", "Intern"];
+  const priority = ["CEO", "Lead", "Senior", "Developer", "Designer", "Intern"];
   return [...members].sort((a, b) => {
     const aIndex = priority.findIndex((p) => a.role.toLowerCase().includes(p.toLowerCase()));
     const bIndex = priority.findIndex((p) => b.role.toLowerCase().includes(p.toLowerCase()));
@@ -33,8 +32,6 @@ const sortBySeniority = (members: typeof TEAM_MEMBERS) => {
 // CARD SECTION RENDERER
 const renderSection = (title: string, members: typeof TEAM_MEMBERS) => {
   const sortedMembers = sortBySeniority(members);
-  const isMobile = useMediaQuery("(max-width:600px)");
-
   return (
     <Box sx={{ mb: 10 }}>
       <Typography
@@ -46,8 +43,8 @@ const renderSection = (title: string, members: typeof TEAM_MEMBERS) => {
 
       <Box
         sx={{
-          display: "grid",
-          gridTemplateColumns: isMobile ? "repeat(2, 1fr)" : "repeat(auto-fit, minmax(220px, 1fr))",
+          display: "flex",
+          flexWrap: "wrap",
           gap: 4,
           justifyContent: "center",
         }}
@@ -57,12 +54,11 @@ const renderSection = (title: string, members: typeof TEAM_MEMBERS) => {
             key={member.name}
             elevation={3}
             sx={{
+              width: 220,
               textAlign: "center",
               borderRadius: 3,
               p: 3,
-              border: member.role.toLowerCase().includes("ceo") || member.role.toLowerCase().includes("co-founder")
-                ? "3px solid gold"
-                : "1px solid #cccfd2ff",
+              border: member.role === "CEO" ? "3px solid gold" : "1px solid #cccfd2ff",
               position: "relative",
               transition: "transform 0.3s",
               "&:hover": {
@@ -105,13 +101,7 @@ const renderSection = (title: string, members: typeof TEAM_MEMBERS) => {
             <Chip
               label={member.role}
               size="small"
-              color={
-                member.role.toLowerCase().includes("developer")
-                  ? "primary"
-                  : member.role.toLowerCase().includes("designer")
-                  ? "secondary"
-                  : "default"
-              }
+              color={member.role.toLowerCase().includes("developer") ? "primary" : "default"}
               sx={{ mb: 1 }}
             />
 
@@ -154,24 +144,21 @@ const renderSection = (title: string, members: typeof TEAM_MEMBERS) => {
 };
 
 export default function About() {
-  const founders = TEAM_MEMBERS.filter((m) => m.role.toLowerCase().includes("co-founder"));
-  const ceos = TEAM_MEMBERS.filter((m) => m.role.toLowerCase().includes("ceo"));
-  const leads = TEAM_MEMBERS.filter((m) =>
-    m.role.toLowerCase().includes("lead") || m.role.toLowerCase().includes("cto")
-  );
+  const ceos = TEAM_MEMBERS.filter((m) => m.role === "CEO");
+
   const developers = TEAM_MEMBERS.filter((m) =>
-    m.role.toLowerCase().includes("developer") && !m.role.toLowerCase().includes("cto")
+    m.role.toLowerCase().includes("developer")
   );
+
   const designers = TEAM_MEMBERS.filter((m) =>
     m.role.toLowerCase().includes("designer")
   );
+
   const others = TEAM_MEMBERS.filter(
     (m) =>
-      !founders.includes(m) &&
-      !ceos.includes(m) &&
-      !leads.includes(m) &&
-      !developers.includes(m) &&
-      !designers.includes(m)
+      m.role !== "CEO" &&
+      !m.role.toLowerCase().includes("developer") &&
+      !m.role.toLowerCase().includes("designer")
   );
 
   return (
@@ -182,6 +169,7 @@ export default function About() {
           <Typography variant="h2" sx={{ fontWeight: 700, mb: 3, color: "#0057FF" }}>
             About Apprelab™
           </Typography>
+
           <Typography
             variant="body1"
             sx={{
@@ -197,6 +185,7 @@ export default function About() {
             <strong> gain real skills, real experience, and real income</strong>.
             We go beyond theory by creating a space where learning meets practical execution.
           </Typography>
+
           <Typography
             variant="body1"
             sx={{
@@ -212,6 +201,7 @@ export default function About() {
             apply what they’ve learned on <strong>real-world projects</strong> —
             guided by mentors and built for professional growth.
           </Typography>
+
           <Typography
             variant="body1"
             sx={{
@@ -257,8 +247,6 @@ export default function About() {
 
         {/* TEAM */}
         {renderSection("CEO", ceos)}
-        {renderSection("Co-Founder", founders)}
-        {renderSection("Leads", leads)}
         {renderSection("Developers", developers)}
         {renderSection("Designers", designers)}
         {others.length > 0 && renderSection("Other Team Members", others)}

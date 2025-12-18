@@ -14,6 +14,8 @@ import Contact from "./pages/Contact";
 import Terms from "./pages/Terms";
 import About from "./pages/About";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
+import CookiePolicy from "./pages/CookiePolicy";
+import CookieBanner from './components/CookieBanner';
 
 export default function App() {
   return (
@@ -186,8 +188,10 @@ export default function App() {
               <Route path="/terms" element={<Terms />} />
               <Route path="/about" element={<About />} />
               <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+              <Route path="/cookie-policy" element={<CookiePolicy />} />
             </Routes>
             <Footer />
+            <CookieBanner />
           </Box>
         </Box>
       </Router>
